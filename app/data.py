@@ -19,6 +19,5 @@ def load_raw_data():
 
 if __name__ == "__main__":
     df = load_raw_data()
-    print("✅ Data loaded successfully!")
+    print("Data loaded successfully!")
     print(f"Shape: {df.shape}")
-    print(f"Columns: {list(df.columns)[:10]} ...")

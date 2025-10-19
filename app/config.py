@@ -12,12 +12,10 @@ MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI", "https://dagshub.com/Chai
 MLFLOW_EXPERIMENT = os.getenv("MLFLOW_EXPERIMENT", "churn_experiment")
 REGISTERED_MODEL_NAME = os.getenv("REGISTERED_MODEL_NAME", "Churn_XGB_Model")
 
-# Model/artifact storage (local)
 ARTIFACT_DIR = os.getenv("ARTIFACT_DIR", "runs")
 MODEL_FILE = os.path.join(ARTIFACT_DIR, "model.pkl")
 FEATURES_FILE = os.path.join(ARTIFACT_DIR, "feature_columns.pkl")
 METRICS_FILE = os.path.join(ARTIFACT_DIR, "metrics.json")
 
-# FastAPI settings
 API_HOST = os.getenv("API_HOST", "0.0.0.0")
 API_PORT = int(os.getenv("API_PORT", 8000))
