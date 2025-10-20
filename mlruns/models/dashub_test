@@ -1,0 +1,27 @@
+import os
+from dotenv import load_dotenv
+import dagshub
+import mlflow
+
+# Load authentication
+load_dotenv()
+os.environ["MLFLOW_TRACKING_USERNAME"] = os.getenv("DAGSHUB_USER", "ChaitanyaC20")
+os.environ["MLFLOW_TRACKING_PASSWORD"] = os.getenv("DAGSHUB_TOKEN", "a1d04dc975bd3baef0716e95f527fecf8072ccef")
+
+# ✅ EXACTLY as DagsHub expects (use your correct username and repo)
+dagshub.init(repo_owner='ChaitanyaC20', repo_name='Total_Revenue_Regression', mlflow=True)
+
+# Set the tracking URI
+mlflow.set_tracking_uri("https://dagshub.com/ChaitanyaC20/Total_Revenue_Regression.mlflow")
+
+# Perform a simple MLflow test run
+with mlflow.start_run(run_name="Integration_Check_Run"):
+    mlflow.log_param("parameter name", "value")
+    mlflow.log_metric("metric name", 1)
+
+print("✅ Test run successfully logged to DagsHub MLflow")
+
+mlflow.set_tracking_uri("https://dagshub.com/ChaitanyaC20/Total_Revenue_Regression.mlflow")
+experiments = mlflow.search_experiments()
+for exp in experiments:
+    print(f"Experiment: {exp.name}, ID: {exp.experiment_id}")

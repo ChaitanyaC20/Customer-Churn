@@ -16,7 +16,6 @@ from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_s
                              roc_auc_score, RocCurveDisplay, classification_report
 )
 from xgboost import XGBClassifier
-
 from app.config import (MLFLOW_EXPERIMENT, ARTIFACT_DIR, MODEL_FILE, METRICS_FILE)
 
 dagshub.init(repo_owner='ChaitanyaC20', repo_name='Customer_Churn', mlflow=True)
